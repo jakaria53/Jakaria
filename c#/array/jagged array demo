@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace jagged_array_example
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[][] jagged1 = new int[3][];
+            {
+                jagged1[0] = new int[3];
+                jagged1[1] = new int[3];
+                jagged1[2] = new int[3];
+            }
+            for(int i=0; i<3; i++)
+            {
+                Console.WriteLine("write here your input for index "+i+ ":");
+                jagged1[1][i] = Convert.ToInt32(Console.ReadLine());
+            }
+            // another way 
+
+            int[][]jagged2=new int[][]
+            {
+                new int[] { 2, 3, 4, 5 },
+                new int[] { 2, 3, 4, 6 },
+                new int[] { 2, 3 }
+                 };
+            for(int j=0; j<3; j++)
+            {
+                Console.WriteLine(jagged2[1][j]); // here jagged2[1] is array index number 
+            }
+        }
+    }
+}
