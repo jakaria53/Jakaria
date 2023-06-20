@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Enum
+{
+    internal class Program
+    {
+        enum weekdays
+        {
+            saturday=1,
+             sunday=2,
+               monday=3,
+                tuesday=4,
+                 wednesday=5,
+                  thursday=6,
+                      friday=7,
+
+        }
+        static void Main(string[] args)                                                                                           //C.J
+        {
+            Console.WriteLine(weekdays.sunday + " is my off day "+ (int)weekdays.sunday);//sunday is my off day-- 2
+            weekdays days=weekdays.monday;
+            Console.WriteLine(days);//monday
+            Console.WriteLine((int)days);  //3
+
+            switch (days)
+            {
+                case weekdays.saturday:  //for true this case write here monday or change 25 no line .
+                    Console.WriteLine("today is my fevoriteday "+days);//it depend on line 25 
+                    break;
+                    default: 
+                    Console.WriteLine("other days ");
+                    break;
+            }
+        }
+    }
+}
