@@ -1,0 +1,51 @@
+public class Start
+{
+	public static void main (String[]args)
+	{
+		Bookshop b1=new Bookshop ("BookStore");
+		
+		TextBook tb1= new TextBook("nryntyyny","Jrfrferfrf","hsds6yh6yh",100,10,1);
+		TextBook tb2= new TextBook("trhyrtgty","Jaff3efff","htyhth",200,20,2);
+		TextBook tb3= new TextBook("ethyhtrh","Jrferffr","htyh6yh6jtyh",300,30,3);
+		TextBook tb4= new TextBook("4hethtthy","fwfewfe","ththyhtyh",400,40,4);
+		TextBook tb5= new TextBook("tythrththease","efwefewfew","tyhthyht",500,50,5);
+		if(b1.insertTextBook(tb1))
+		{
+			System.out.println("TextBOOK 1 inserted");
+		}
+		else
+		{
+			System.out.println("TextBOOKs overflow");
+		}
+		b1.insertTextBook(tb2);
+		b1.insertTextBook(tb3);
+		b1.insertTextBook(tb4);
+		b1.insertTextBook(tb5);
+		
+		
+		StoryBook sb1= new StoryBook("fds","wdawdawd","tnhyhnyny",100,10,"Adventure-1");
+		StoryBook sb2= new StoryBook("dawdwd","awdawdwad","ttyby6",200,20,"Adventure-2");
+		StoryBook sb3= new StoryBook("awdawd","fdgdfgdf","grtgt",300,30,"Adventure-3");
+		StoryBook sb4= new StoryBook("awdawd","ferferfvv","btbtbtb",400,40,"Adventure-4");
+		StoryBook sb5= new StoryBook("wdawd","hrthtrhth","hggtrgtrt",555,85,"Adventure-5");
+		b1.insertStoryBook(sb1);
+		b1.insertStoryBook(sb2);
+		b1.insertStoryBook(sb3);
+		b1.insertStoryBook(sb4);
+		b1.insertStoryBook(sb5);
+		b1.showAllTextBooks();
+		b1.showAllStoryBooks();
+		System.out.println("\nAfte Removing Story Book 3\n");
+		if(b1.removeStoryBook(sb3))
+		{
+			System.out.println("Removed");
+		}
+		else
+		{
+			System.out.println("No match found");
+		}
+		b1.showAllStoryBooks();
+		System.out.println("\nSerching Text Book 2\n");
+		b1.searchTextBook("2nd Release").showDetails();
+	}
+}
