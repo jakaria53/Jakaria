@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+// Function to merge two separate part array of 'arr[]'.
+// The first part is arr[left to mid], and the second part is arr[mid+1 to right].
+
+void merge(int arr[], int l, int mid, int r)
+{
+    // Calculate the sizes of the two separate array.
+    int n1 = mid - l + 1;
+    int n2 = r - mid;
+        // Create temporary arrays to hold the separate array.
+
+    int a[n1];
+    int b[n2];
+
+    // Copy data to temporary arrays a[] and b[].
+
+    for (int i = 0; i < n1; i++) {
+        a[i] = arr[l + i];
+    }
+    for (int i = 0; i < n2; i++) {
+        b[i] = arr[mid + 1 + i];
+    }
+     // Initialize indices for merging a[] and b[] back into arr[].
+    int i = 0; // Index for the first separate array (a[]).
+    int j = 0; // Index for the second separate array (b[]).
+    int k = l; // Index for the merged separate array (arr[]).
+
+    // Merge the two separate arrays back into arr[].
+    while (i < n1 && j < n2) {
+        if (a[i] <= b[j]) {
+            arr[k] = a[i];
+            i++;
+        } else {
+            arr[k] = b[j];
+            j++;
+        }
+        k++;
+    }
+  // Copy the remaining elements of a[], if any.
+    while (i < n1) {
+        arr[k] = a[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of b[], if any.
+    while (j < n2) {
+        arr[k] = b[j];
+        j++;
+        k++;
+    }
+}
+// Function to perform merge sort on an array 'arr[]'.
+// It recursively divides the array into smaller subarrays and merges them.
+void mergeSort(int arr[], int l, int r) {
+    if (l < r)
+        {
+        // Find the middle point of the array.
+        int mid = (l + r) / 2;
+
+      //describing a key part of the merge sort algorithm.
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
+
+        // Merge the sorted halves.
+        merge(arr, l, mid, r);
+    }
+
+int main()
+{
+ int arr[]={5,4,3,2,1};
+ //we will call merge function to sort the array
+ mergeSort(arr,0,4);
+ // for print the sorted array.
+ for(int i=0;i<5;i++)
+ {
+     cout<<arr[i]<<" ";
+ }
+ cout<<endl;
+    return 0;
+}
