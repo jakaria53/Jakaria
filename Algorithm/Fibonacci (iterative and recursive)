@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+ int iterativeFibonacci(int n)
+ {
+     if (n == 0) {
+        return 0;
+    }
+    int a = 0;
+    int b = 1;
+    int current;
+
+    for (int i = 0; i < n; i++) {
+        current = a + b;
+        a = b;
+        b = current;
+    }
+
+    return current;
+ }
+
+
+int recursiveFibonacci(int n)
+ {
+         if (n <= 1)
+            return n;
+        return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+ }
+
+int main() {
+    int n;
+    char method;
+    cout << "Enter the length of the Fibonacci sequence to generate: ";
+    cin >> n;
+    if (n < 0) {
+        cout << "Invalid input: n must be non-negative." << endl;
+        return 1;
+    }
+    cout << "Choose the method for generating the Fibonacci sequence (I/i for Iterative, R/r for Recursive): ";
+    cin >> method;
+    if (method == 'I' || method == 'i') {
+        for (int i = 0; i < n; i++) {
+            cout << i << ": " << iterativeFibonacci(i) << endl;
+        }
+    } else {
+        for (int i = 0; i < n; i++) {
+            cout << i << ": " << recursiveFibonacci(i) << endl;
+        }
+    }
+
+    return 0;
+}
