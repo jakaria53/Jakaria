@@ -1,0 +1,38 @@
+#include <iostream>
+
+int main() {
+    int n =12 /* some value */; // Assuming n is the size of array A
+    int A[n]; // Array of integers
+    int R =7/* some value */; // Assuming R is the range of values in array A
+
+    // Count array to store the frequency of each element in A
+    int count[R] = {0};
+
+    // Count occurrences of each element in A
+    for (int i = 0; i < n; i++) {
+        count[A[i]]++;
+    }
+
+    // Modify count array to store cumulative frequency
+    for (int i = 1; i < R; i++) {
+        count[i] += count[i - 1];
+    }
+
+    // Create an output array based on the count array
+    int output[n];
+    for (int i = n - 1; i >= 0; i--) {
+        output[--count[A[i]]] = A[i];
+    }
+
+    // Copy the sorted elements back to the original array A
+    for (int i = 0; i < n; i++) {
+        A[i] = output[i];
+    }
+
+    // Print the sorted array
+    for (int i = 0; i < n; i++) {
+        std::cout << A[i] << " ";
+    }
+
+    return 0;
+}
